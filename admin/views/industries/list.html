@@ -1,0 +1,24 @@
+<h2 class="page-header">Отрасли</h2>
+<div class="tools pull-left">
+  <a href="#/industries/new" class="btn btn-primary">Создать новую запись</a>
+</div>
+<div class="col-md-4">
+  <input type="text" class="form-control" ng-model="query" placeholder="поиск...">
+</div>
+<div class="col-md-4">
+  <p>Общее количество записей: {{industries.length}}</p>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th ng-click="sort('id')">#</th>
+      <th ng-click="sort('name')">Наименование</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr ng-repeat="industry in industries | orderBy:sortField:reverse | filter:query">
+        <td>{{industry.id}}</td>
+        <td><a href="#/industries/edit/{{industry.id}}">{{industry.name}}</a></td>
+      </tr>
+  </tbody>
+</table>

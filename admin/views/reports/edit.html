@@ -1,0 +1,39 @@
+<form name="saveForm" class="form-horizontal">
+	<fieldset class="col-md-4">
+		<div class="control-group">
+			<div class="controls">
+				<h3>{{["Добавление","Изменение"][(item.id>0)+0]}} записи</h3>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.ticker.$invalid}">
+			<label class="control-label" for="title">Тикер</label>
+			<div class="controls">
+				<input name="ticker" class="form-control"  ng-model="item.ticker" required>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.name.$invalid}">
+			<label class="control-label" for="author">Наименование</label>
+			<div class="controls">
+				<input name="name" class="form-control"  ng-model="item.name" required>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.industry.$invalid}">
+			<label class="control-label" for="answerer">Отрасль</label>
+			<div class="controls">
+				<select name="industry" class="form-control" ng-model="item.industry" ng-options="industry.id as industry.name for industry in industries"></select>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.ogrn.$invalid}">
+			<label class="control-label" for="text">ОГРН</label>
+			<div class="controls">
+				<input name="ogrn" class="form-control"  ng-model="item.ogrn" required>
+			</div>
+		</div>
+		<br>
+		<div class="form-actions">
+			<input type="button" ng-disabled="saveForm.$invalid||saveForm.$pristine" ng-click="save()" class="btn btn-success" value="Сохранить">
+			<a href="#/issuers" class="btn btn-default">Отмена</a>
+			<button ng-click="delete()" class="btn btn-danger" ng-show="item.id>0">Удалить</button>
+		</div>
+	</fieldset>
+</form>

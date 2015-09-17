@@ -1,0 +1,26 @@
+<h2 class="page-header">Финансовые показатели</h2>
+<div class="tools pull-left">
+  <a href="#/indicators/new" class="btn btn-primary">Создать новую запись</a>
+</div>
+<div class="col-md-4">
+  <input type="text" class="form-control" ng-model="query" placeholder="поиск...">
+</div>
+<div class="col-md-4">
+  <p>Общее количество записей: {{indicators.length}}</p>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th ng-click="sort('id')">#</th>
+      <th ng-click="sort('name')">Наименование</th>
+      <th ng-click="sort('code')">Код строки</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr ng-repeat="indicator in indicators | orderBy:sortField:reverse | filter:query">
+        <td>{{indicator.id}}</td>
+        <td><a href="#/indicators/edit/{{indicator.id}}">{{indicator.name}}</td>
+        <td>{{indicator.code}}</td>
+      </tr>
+  </tbody>
+</table>

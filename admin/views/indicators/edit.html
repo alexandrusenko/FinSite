@@ -1,0 +1,27 @@
+<form name="saveForm" class="form-horizontal">
+	<fieldset class="col-md-4">
+		<div class="control-group">
+			<div class="controls">
+				<h3>{{["Добавление","Изменение"][(item.id>0)+0]}} записи</h3>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.name.$invalid}">
+			<label class="control-label" for="name">Наименование</label>
+			<div class="controls">
+				<input name="name" class="form-control" ng-model="item.name" required>
+			</div>
+		</div>
+		<div class="control-group" ng-class="{error: saveForm.code.$invalid}">
+			<label class="control-label" for="code">Код строки</label>
+			<div class="controls">
+				<input name="code" class="form-control" ng-model="item.code" required>
+			</div>
+		</div>
+		<br>
+		<div class="form-actions">
+			<input type="button" ng-disabled="saveForm.$invalid||saveForm.$pristine" ng-click="save()" class="btn btn-success" value="Сохранить">
+			<a href="#/indicators" class="btn btn-default">Отмена</a>
+			<button ng-click="delete()" class="btn btn-danger" ng-show="item.id>0">Удалить</button>
+		</div>
+	</fieldset>
+</form>

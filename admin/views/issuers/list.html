@@ -1,0 +1,30 @@
+<h2 class="page-header">Эмитенты</h2>
+<div class="tools pull-left">
+  <a href="#/issuers/new" class="btn btn-primary">Создать новую запись</a>
+</div>
+<div class="col-md-4">
+  <input type="text" class="form-control" ng-model="query" placeholder="поиск...">
+</div>
+<div class="col-md-4">
+  <p>Общее количество записей: {{issuers.length}}</p>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th ng-click="sort('id')">#</th>
+      <th ng-click="sort('ticker')">Тикер</th>
+      <th ng-click="sort('name')">Наименование</th>
+      <th ng-click="sort('industry')">Отрасль</th>
+      <th ng-click="sort('ogrn')">ОГРН</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr ng-repeat="issuer in issuers | orderBy:sortField:reverse | filter:query">
+        <td>{{issuer.id}}</td>
+        <td>{{issuer.ticker}}</td>
+        <td><a href="#/issuers/edit/{{issuer.id}}">{{issuer.name}}</a></td>
+        <td>{{issuer.industry}}</td>
+        <td>{{issuer.ogrn}}</td>
+      </tr>
+  </tbody>
+</table>
